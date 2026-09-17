@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Undangan Wisuda Universitas Andalas</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-script: 'Great Vibes', cursive;
+            --text-color: #4A3B2C;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            font-family: var(--font-body);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* MOBILE CANVAS */
+        #mobile-container {
+            position: relative;
+            width: 100%;
+            max-width: 430px;
+            height: 100svh;
+            /* Changed to fixed height for scrolling inner content */
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: #FBEEE6;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* GLOBAL BACKGROUND */
+        .global-background {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .opening-background {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .opening-rektorat {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        .opening-sakura {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .sakura-left {
+            left: -12%;
+            top: -8%;
+            width: 70%;
+            height: auto;
+            transform-origin: top left;
+            animation: swayLeft 5s ease-in-out infinite alternate;
+        }
+
+        .sakura-right {
+            right: -12%;
+            top: -5%;
+            width: 70%;
+            height: auto;
+            transform-origin: top right;
+            animation: swayRight 6.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes swayLeft {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(6deg);
+            }
+        }
+
+        @keyframes swayRight {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(-6deg);
+            }
+        }
+
+        /* COVER PAGE */
+        #cover-page {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.8s ease;
+        }
+
+        #cover-page.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .opening-content {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10vh;
+            text-align: center;
+        }
+
+        .logo-unand {
+            width: 70px;
+            height: auto;
+            margin-bottom: 15px;
+            mix-blend-mode: multiply;
+        }
+
+        .opening-content h2 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .opening-content .name {
+            font-family: var(--font-heading);
+            font-size: 44px;
+            /* Diperbesar */
+            color: var(--text-color);
+            font-weight: 700;
+            /* Dipertebal */
+            margin-bottom: 5px;
+            /* Didekatkan ke departemen */
+            line-height: 1.1;
+        }
+
+        .opening-content .department {
+            font-family: var(--font-body);
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--text-color);
+            font-weight: 500;
+            margin-bottom: 35px;
+            line-height: 1.4;
+        }
+
+        .guest-section {
+            margin-bottom: 30px;
+            background-color: rgba(253, 251, 247, 0.7);
+            /* Background kaca buram agar tulisan terbaca */
+            backdrop-filter: blur(8px);
+            padding: 15px 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .guest-section p {
+            font-family: var(--font-body);
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--text-color);
+            margin: 0 0 8px 0;
+        }
+
+        .guest-name-box {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--text-color);
+            border-bottom: 1px solid rgba(74, 59, 44, 0.4);
+            padding: 5px 30px;
+            display: inline-block;
+            min-width: 160px;
+        }
+
+        .btn-open {
+            background-color: rgba(251, 238, 230, 0.6);
+            border: 1px solid rgba(74, 59, 44, 0.4);
+            color: var(--text-color);
+            padding: 12px 36px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-open:hover {
+            background-color: rgba(74, 59, 44, 0.85);
+            color: #FBEEE6;
+            border-color: rgba(74, 59, 44, 0.85);
+        }
+
+        /* MAIN CONTENT SCROLLABLE */
+        #main-content {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            opacity: 0;
+            transition: opacity 1s ease 0.5s;
+        }
+
+        .page-section {
+            width: 100%;
+            min-height: 100svh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .page-section.first {
+            padding-top: 22vh;
+            justify-content: flex-start;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            margin: 0 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .greeting-text {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            margin-top: 0;
+        }
+
+        .highlight-name {
+            display: block;
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .highlight-dept {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 12px;
+            line-height: 1.4;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .highlight-univ {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .countdown-wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .time-box {
+            background: rgba(251, 238, 230, 0.6);
+            border: 1px solid rgba(74, 59, 44, 0.15);
+            border-radius: 10px;
+            padding: 12px 5px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .time-box span {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            color: var(--text-color);
+            line-height: 1;
+        }
+
+        .time-box small {
+            font-family: var(--font-body);
+            font-size: 9px;
+            letter-spacing: 1px;
+            margin-top: 6px;
+            color: rgba(74, 59, 44, 0.7);
+        }
+
+        .btn-calendar {
+            background-color: rgba(251, 238, 230, 0.5);
+            border: 1px solid rgba(74, 59, 44, 0.4);
+            color: var(--text-color);
+            padding: 12px 30px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-calendar:hover {
+            background-color: rgba(74, 59, 44, 0.85);
+            color: #FBEEE6;
+        }
+
+        /* EVENT CARD */
+        .event-card {
+            background-color: #FDFBF7;
+            border: 1px solid rgba(74, 59, 44, 0.2);
+            border-radius: 20px 20px 45px 45px;
+            margin: 0 20px;
+            padding: 25px 20px 20px 20px;
+            /* Reduced vertical padding */
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            left: 5px;
+            right: 5px;
+            /* Tighter inner border */
+            border: 1px solid rgba(74, 59, 44, 0.15);
+            border-radius: 15px 15px 40px 40px;
+            pointer-events: none;
+        }
+
+        .event-logo {
+            width: 65px;
+            height: auto;
+            margin-bottom: 10px;
+            /* Reduced */
+            mix-blend-mode: multiply;
+        }
+
+        .event-title {
+            font-family: var(--font-script);
+            font-size: 38px;
+            /* Slightly smaller */
+            color: var(--text-color);
+            margin: 0 0 5px 0;
+            /* Reduced */
+            line-height: 1;
+        }
+
+        .event-subtitle {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            /* Slightly smaller */
+            color: var(--text-color);
+            line-height: 1.2;
+            /* Tighter */
+            margin-bottom: 5px;
+            /* Reduced */
+        }
+
+        .event-subtitle span {
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+
+        .event-divider {
+            color: rgba(74, 59, 44, 0.4);
+            font-size: 14px;
+            margin: 8px 0;
+            /* Reduced */
+        }
+
+        .event-intro {
+            font-family: var(--font-body);
+            font-size: 10.5px;
+            font-style: italic;
+            line-height: 1.4;
+            /* Tighter */
+            color: var(--text-color);
+            margin: 0 10px 15px 10px;
+            /* Reduced */
+        }
+
+        .event-details-grid {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            margin-bottom: 15px;
+            /* Reduced */
+            border-top: 1px solid rgba(74, 59, 44, 0.15);
+            border-bottom: 1px solid rgba(74, 59, 44, 0.15);
+            padding: 10px 0;
+            /* Reduced */
+        }
+
+        .detail-item {
+            flex: 1;
+            padding: 0 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .border-sides {
+            border-left: 1px solid rgba(74, 59, 44, 0.15);
+            border-right: 1px solid rgba(74, 59, 44, 0.15);
+        }
+
+        .detail-icon {
+            font-size: 18px;
+            /* Slightly smaller */
+            margin-bottom: 5px;
+            /* Reduced */
+            color: rgba(74, 59, 44, 0.8);
+        }
+
+        .detail-text {
+            font-family: var(--font-body);
+            font-size: 9px;
+            line-height: 1.3;
+            /* Tighter */
+            color: var(--text-color);
+        }
+
+        .map-label {
+            margin-bottom: 10px;
+            /* Reduced */
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-label span {
+            background-color: rgba(145, 126, 107, 0.9);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 18px;
+            font-family: var(--font-body);
+            font-size: 9px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 160px;
+            /* Reduced from 180px */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(74, 59, 44, 0.15);
+            margin-bottom: 15px;
+            /* Reduced */
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-maps {
+            display: inline-block;
+            background-color: rgba(145, 126, 107, 0.9);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 22px;
+            /* Tighter padding */
+            border-radius: 25px;
+            font-family: var(--font-body);
+            font-size: 9.5px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            /* Reduced */
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-maps:hover {
+            background-color: var(--text-color);
+        }
+
+        .event-footer {
+            font-family: var(--font-body);
+            font-size: 9px;
+            font-style: italic;
+            color: var(--text-color);
+            line-height: 1.4;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CLOSING CARD (Page 3) */
+        .closing-card {
+            background-color: rgba(253, 251, 247, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(74, 59, 44, 0.2);
+            border-radius: 20px 20px 45px 45px;
+            margin: 0 20px;
+            padding: 45px 25px 35px 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .closing-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid rgba(74, 59, 44, 0.2);
+            background-color: rgba(74, 59, 44, 0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(74, 59, 44, 0.4);
+            font-size: 45px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .closing-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            /* Memfokuskan ke bagian wajah/atas foto */
+        }
+
+        .closing-text {
+            font-family: var(--font-body);
+            font-size: 11.5px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .closing-signature p {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--text-color);
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .signature-name {
+            font-family: var(--font-script);
+            font-size: 40px;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .closing-footer {
+            margin-top: 40px;
+            font-family: var(--font-body);
+            font-size: 9px;
+            font-weight: 600; /* Ditebalkan sedikit */
+            color: rgba(74, 59, 44, 0.8); /* Dibuat sedikit lebih gelap agar ketebalannya terlihat */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(74, 59, 44, 0.15);
+            padding-top: 15px;
+            width: 80%;
+        }
+
+        /* MUSIC & SCROLL CONTROL */
+        #music-control,
+        #scroll-control {
+            position: absolute;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(253, 251, 247, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(74, 59, 44, 0.2);
+            color: rgba(74, 59, 44, 0.8);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #music-control {
+            right: 20px;
+        }
+
+        #scroll-control {
+            left: 20px;
+        }
+
+        #music-control.visible,
+        #scroll-control.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #music-control:hover,
+        #scroll-control:hover {
+            background-color: rgba(74, 59, 44, 0.8);
+            color: #fff;
+        }
+
+        .spin {
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .active-scroll {
+            background-color: rgba(74, 59, 44, 0.8) !important;
+            color: #fff !important;
+        }
+
+        /* FALLING PETALS */
+        #petals-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 50;
+            /* Jatuh di atas kartu tapi di bawah tombol */
+        }
+
+        .petal {
+            position: absolute;
+            top: -10%;
+            animation-name: fallAndSway;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fallAndSway {
+            0% {
+                transform: translate3d(0, 0, 0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate3d(var(--sway), 110svh, 0) rotate(var(--rot));
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 430px) {
+            #mobile-container {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="mobile-container">
+
+        <!-- GLOBAL BACKGROUND (Tetap & Statis) -->
+        <div class="global-background">
+            <img class="opening-background" src="background/bgfull.jpeg" alt="">
+            <img class="opening-rektorat" src="background/opening-rektorat2.png" alt="">
+            <img class="opening-sakura sakura-left" src="background/sakura left tanpabg.png" alt="">
+            <img class="opening-sakura sakura-right" src="background/sakura right tanpa bg.png" alt="">
+        </div>
+
+        <!-- PETALS CONTAINER -->
+        <div id="petals-container"></div>
+
+        <!-- COVER PAGE (Sampul Utama) -->
+        <section id="cover-page">
+            <div class="opening-content">
+                <!-- Logo Unand -->
+                <img src="background/logo_unand-nobg.png" alt="Logo Universitas Andalas" class="logo-unand">
+
+                <!-- Judul & Nama -->
+                <h2>WISUDA IV</h2>
+                <div class="name">ANDHINI PRAMUDITA</div>
+                <div class="department">
+                    Departemen Administrasi Publik<br>
+                    Fakultas Ilmu Sosial dan Ilmu Politik
+                </div>
+
+                <!-- Section Tamu -->
+                <div class="guest-section">
+                    <p>Kepada Yth.</p>
+                    <div class="guest-name-box" id="guest-name">Bapak/Ibu/Saudara/i</div>
+                </div>
+
+                <!-- Tombol -->
+                <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT (Isi Undangan, Muncul Setelah Cover Terbuka) -->
+        <section id="main-content">
+            <!-- PAGE 1 -->
+            <div class="page-section first">
+                <div class="glass-card">
+                    <p class="greeting-text">
+                        Tanpa mengurangi rasa hormat, saya bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri
+                        acara
+                        wisuda<br>
+                        <span class="highlight-name">Andhini Pramudita</span>
+                        <span class="highlight-dept">Departemen Administrasi Publik<br>Fakultas Ilmu Sosial dan Ilmu
+                            Politik</span>
+                        <span class="highlight-univ">Universitas Andalas 2026</span>
+                    </p>
+
+                    <!-- Countdown -->
+                    <div class="countdown-wrapper">
+                        <div class="time-box">
+                            <span id="hari">00</span>
+                            <small>HARI</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="jam">00</span>
+                            <small>JAM</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="menit">00</span>
+                            <small>MENIT</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="detik">00</span>
+                            <small>DETIK</small>
+                        </div>
+                    </div>
+
+                    <!-- Simpan Tanggal -->
+                    <button class="btn-calendar">
+                        📅 Simpan Tanggal
+                    </button>
+                </div>
+            </div>
+
+            <!-- PAGE 2 (EVENT CARD) -->
+            <div class="page-section">
+                <div class="event-card">
+                    <!-- Logo -->
+                    <img src="background/logo_unand-nobg.png" alt="Logo UNAND" class="event-logo">
+
+                    <!-- Title -->
+                    <h2 class="event-title">Save the Date</h2>
+                    <div class="event-subtitle">Acara Wisuda Andin</span></div>
+
+                    <!-- Intro text -->
+                    <p class="event-intro">
+                        Dengan penuh rasa syukur, saya mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara Wisuda
+                        Sarjana dan Diploma IV Universitas Andalas 2026.
+                    </p>
+
+                    <!-- Grid Details -->
+                    <div class="event-details-grid">
+                        <div class="detail-item">
+                            <div class="detail-icon">📅</div>
+                            <div class="detail-text">Minggu,<br>20 September 2026</div>
+                        </div>
+                        <div class="detail-item border-sides">
+                            <div class="detail-icon">🕒</div>
+                            <div class="detail-text">12.00 WIB<br>- 15.00 WIB</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">📍</div>
+                            <div class="detail-text">REKTORAT<br>Universitas Andalas</div>
+                        </div>
+                    </div>
+
+                    <!-- Map Label -->
+                    <div class="map-label"><span>📍 LOKASI ACARA</span></div>
+
+                    <!-- Map Embed -->
+                    <div class="map-container">
+                        <iframe
+                            src="https://maps.google.com/maps?q=Rektorat%20Universitas%20Andalas&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <!-- Button Maps -->
+                    <a href="https://maps.google.com/maps?q=Rektorat+Universitas+Andalas" target="_blank"
+                        class="btn-maps">📍 BUKA DI GOOGLE MAPS →</a>
+
+                    <!-- Footer Text -->
+                    <p class="event-footer">
+                        Kehadiran Bapak/Ibu/Saudara/i<br>merupakan kehormatan bagi saya.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PAGE 3 (CLOSING) -->
+            <div class="page-section">
+                <div class="closing-card">
+                    <!-- Foto -->
+                    <div class="closing-photo">
+                        <img src="photos/jelek.jpeg" alt="Foto Andhini Pramudita">
+                    </div>
+
+                    <!-- Ucapan Penutup -->
+                    <p class="closing-text">
+                        Demikian undangan ini saya sampaikan, atas perhatian dan kehadiran Bapak/Ibu/Saudara/i sekalian
+                        saya ucapkan terima kasih.
+                    </p>
+
+                    <!-- Tanda Tangan -->
+                    <div class="closing-signature">
+                        <p>Hormat Saya</p>
+                        <h3 class="signature-name">Andhini Pramudita</h3>
+                    </div>
+
+                    <!-- Footer / Credit -->
+                    <div class="closing-footer">
+                        direct by Sherly Sukmadira Putri
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUDIO BGM -->
+        <audio id="bgm">
+            <source src="background/music.mp4" type="audio/mpeg">
+        </audio>
+
+        <!-- MUSIC CONTROL -->
+        <button id="music-control" onclick="toggleMusic()">
+            🎵
+        </button>
+
+        <!-- SCROLL CONTROL -->
+        <button id="scroll-control" onclick="toggleAutoScroll()" title="Auto Scroll">
+            ⏬
+        </button>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        const bgm = document.getElementById('bgm');
+        const musicControl = document.getElementById('music-control');
+        const scrollControl = document.getElementById('scroll-control');
+        let isPlaying = false;
+        let autoScrollInterval = null;
+        let isAutoScrolling = false;
+
+        // Logika Tombol Buka Undangan
+        function openInvitation() {
+            const cover = document.getElementById('cover-page');
+            const mainContent = document.getElementById('main-content');
+
+            // Animasi Cover Naik
+            cover.classList.add('hidden');
+
+            // Animasi Main Content Muncul
+            mainContent.style.display = 'block'; // Pastikan terlihat secara DOM
+            setTimeout(() => {
+                mainContent.classList.add('visible');
+                musicControl.classList.add('visible');
+                scrollControl.classList.add('visible');
+            }, 50);
+
+            // Putar Musik & Aktifkan Scroll otomatis
+            playMusic();
+            if (!isAutoScrolling) {
+                toggleAutoScroll();
+            }
+        }
+
+        function toggleAutoScroll() {
+            const mainContent = document.getElementById('main-content');
+            if (isAutoScrolling) {
+                // Matikan Auto Scroll
+                clearInterval(autoScrollInterval);
+                isAutoScrolling = false;
+                scrollControl.classList.remove('active-scroll');
+                scrollControl.innerHTML = '❌';
+                mainContent.style.scrollSnapType = 'y mandatory'; // Hidupkan lagi snap halamannya
+            } else {
+                // Hidupkan Auto Scroll
+                isAutoScrolling = true;
+                scrollControl.classList.add('active-scroll');
+                scrollControl.innerHTML = '⏬';
+                mainContent.style.scrollSnapType = 'none'; // Matikan snap agar pergerakan mulus
+
+                // Scroll perlahan-lahan ke bawah (1 pixel setiap 30ms)
+                autoScrollInterval = setInterval(() => {
+                    // Jika sudah sampai ujung bawah, matikan autoscroll secara otomatis
+                    if (mainContent.scrollTop + mainContent.clientHeight >= mainContent.scrollHeight - 2) {
+                        toggleAutoScroll(); // Panggil fungsi ini lagi untuk mematikan statusnya
+                    } else {
+                        // Gulir ke bawah 1 pixel terus-menerus
+                        mainContent.scrollBy({ top: 1, behavior: 'auto' });
+                    }
+                }, 30);
+            }
+        }
+
+        function playMusic() {
+            // Jika musik baru pertama diputar, mulai dari detik ke 170 (2 menit 50 detik)
+            if (bgm.currentTime < 170) {
+                bgm.currentTime = 170;
+            }
+            bgm.play().then(() => {
+                isPlaying = true;
+                musicControl.classList.add('spin');
+            }).catch(e => {
+                console.log("Audio autoplay diblokir oleh browser.");
+            });
+        }
+
+        // Looping custom: jika musik selesai, kembali ke detik 170 dan putar lagi
+        bgm.addEventListener('ended', function () {
+            bgm.currentTime = 170;
+            bgm.play();
+        });
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgm.pause();
+                isPlaying = false;
+                musicControl.classList.remove('spin');
+                musicControl.innerHTML = '🔇';
+            } else {
+                bgm.play();
+                isPlaying = true;
+                musicControl.classList.add('spin');
+                musicControl.innerHTML = '🎵';
+            }
+        }
+
+        // Logika Countdown Timer
+        // Target Wisuda: 20 September 2026 jam 12.00
+        const targetDate = new Date("Sep 20, 2026 12:00:00").getTime();
+
+        const countdownInterval = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Format ke 2 digit
+            document.getElementById("hari").innerHTML = days < 10 ? '0' + days : days;
+            document.getElementById("jam").innerHTML = hours < 10 ? '0' + hours : hours;
+            document.getElementById("menit").innerHTML = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("detik").innerHTML = seconds < 10 ? '0' + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("hari").innerHTML = "00";
+                document.getElementById("jam").innerHTML = "00";
+                document.getElementById("menit").innerHTML = "00";
+                document.getElementById("detik").innerHTML = "00";
+            }
+        }, 1000);
+
+        // Animasi Bunga Berguguran
+        function createPetals() {
+            const container = document.getElementById('petals-container');
+            const petalImages = [
+                'decoration/petal2_nobg.png',
+                'decoration/petal4_nobg.png',
+                'decoration/petal5_nobg.png',
+                'decoration/petal6_nobg.png'
+            ];
+
+            const petalCount = 15; // Jumlah kelopak bunga (agak banyak)
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('img');
+                petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
+                petal.classList.add('petal');
+
+                // Randomisasi animasi
+                const startX = Math.random() * 100; // posisi awal dari kiri 0-100%
+                const delay = Math.random() * 15; // penundaan mulai 0-15s agar tidak jatuh bersamaan
+                const duration = Math.random() * 12 + 10; // lama jatuh 10-22s (lebih lambat)
+                const size = Math.random() * 30 + 45; // ukuran bunga 45-75px (JAUH LEBIH BESAR)
+                const sway = (Math.random() - 0.5) * 150; // ayunan serong -75px ke 75px
+                const rotation = Math.random() * 360 + 360; // perputaran 360-720 derajat
+
+                petal.style.left = `${startX}%`;
+                petal.style.width = `${size}px`;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+
+                // Memasukkan nilai variabel CSS
+                petal.style.setProperty('--sway', `${sway}px`);
+                petal.style.setProperty('--rot', `${rotation}deg`);
+
+                container.appendChild(petal);
+            }
+        }
+
+        // Jalankan saat web selesai dimuat
+        document.addEventListener("DOMContentLoaded", () => {
+            createPetals();
+
+            // Mengambil nama tamu dari URL (contoh: index.html?to=Budi+Santoso)
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            if (guestName) {
+                document.getElementById('guest-name').textContent = guestName;
+            }
+        });
+    </script>
+</body>
+
+</html>
